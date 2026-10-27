@@ -1,0 +1,11 @@
+# Offline sanity check: no API keys, no network. Runs in seconds.
+# The "memorizer" should show a huge gap; the "oracle" should show none.
+# If either looks different, something in the pipeline is broken.
+run_name: smoke
+seed: 0
+n_numeric_variants: 5
+n_samples: 1
+concurrency: 8
+models:
+  - { name: oracle, type: oracle }
+  - { name: memorizer, type: memorizer }

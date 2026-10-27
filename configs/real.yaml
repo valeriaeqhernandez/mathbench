@@ -1,0 +1,30 @@
+# A real run. Every model here uses the OpenAI-compatible chat API.
+# Put API keys in a .env file or export them in your shell; never commit them.
+# Delete any model you don't have access to.
+run_name: real-v0
+seed: 0
+n_numeric_variants: 10
+n_samples: 3          # several samples per problem gives tighter estimates
+concurrency: 8
+models:
+  # Free and local: install Ollama, then `ollama pull qwen2.5:7b`
+  - name: qwen2.5-7b-local
+    type: openai
+    base_url: http://localhost:11434/v1
+    model: qwen2.5:7b
+    temperature: 0.7
+
+  # One key gives access to many open and closed models
+  - name: llama-3.1-8b
+    type: openai
+    base_url: https://openrouter.ai/api/v1
+    model: meta-llama/llama-3.1-8b-instruct
+    api_key_env: OPENROUTER_API_KEY
+    temperature: 0.7
+
+  - name: gpt-4o-mini
+    type: openai
+    base_url: https://api.openai.com/v1
+    model: gpt-4o-mini
+    api_key_env: OPENAI_API_KEY
+    temperature: 0.7
